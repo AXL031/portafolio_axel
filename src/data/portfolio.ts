@@ -29,13 +29,13 @@ export const projects: Project[] = [
     contribution: 'Desarrollo Full Stack, despliegue y configuración de analíticas.',
     technologies: ['Next.js', 'React', 'Tailwind CSS', 'Firebase Hosting', 'Google Analytics', 'Apps Script'],
     demoUrl: 'https://auracentropsicologico.com',
-    thumbnail: '/portfolio-assets/aura/portada.png',
+    thumbnail: '/portfolio-assets/aura/portada.webp',
     context: 'Aura Centro Psicológico necesitaba una presencia digital profesional para atraer pacientes y gestionar citas.',
     problem: 'Falta de visibilidad online y proceso manual de registro de interesados.',
     solution: 'Desarrollé una landing page optimizada para SEO con un formulario integrado a Google Apps Script para almacenar leads directamente en Google Sheets. Se alojó en Firebase para alta disponibilidad.',
     architecture: ['Frontend: Next.js + Tailwind CSS', 'Backend (Formulario): Google Apps Script', 'Hosting: Firebase Hosting'],
     results: ['Incremento en la captación de leads en un 40%', 'Tiempos de carga menores a 1s', 'Implementación exitosa de eventos de Google Analytics'],
-    images: ['/portfolio-assets/aura/portada.png', '/portfolio-assets/aura/contacto.png']
+    images: ['/portfolio-assets/aura/portada.webp', '/portfolio-assets/aura/contacto.webp']
   },
   {
     id: '2',
@@ -45,13 +45,13 @@ export const projects: Project[] = [
     type: 'Proyecto Grupal',
     contribution: 'Integración de Gemini API, módulo de reconocimiento por imágenes e interfaz principal.',
     technologies: ['React', 'Next.js', 'Gemini API', 'Tailwind CSS', 'Node.js'],
-    thumbnail: '/portfolio-assets/wankafood/home.png',
+    thumbnail: '/portfolio-assets/wankafood/portada.webp',
     context: 'WankaFood busca revolucionar la forma en que los usuarios compran alimentos sugiriendo recetas basadas en lo que tienen en casa.',
     problem: 'Los usuarios no saben qué cocinar con los ingredientes que compran o tienen.',
     solution: 'Integración de Inteligencia Artificial Generativa (Gemini API) para analizar imágenes subidas por el usuario, detectar ingredientes y generar recetas paso a paso con los productos disponibles en la tienda.',
     architecture: ['Frontend: React/Next.js', 'IA: Google Gemini Vision API', 'Backend: Node.js para procesamiento de pagos y carrito'],
     results: ['Precisión del 92% en reconocimiento de ingredientes', 'Generación de recetas en menos de 3 segundos', 'Aumento en el ticket promedio por sugerencias de ingredientes faltantes'],
-    images: ['/portfolio-assets/wankafood/home.png', '/portfolio-assets/wankafood/reconocimiento.png', '/portfolio-assets/wankafood/receta.png']
+    images: ['/portfolio-assets/wankafood/portada.webp', '/portfolio-assets/wankafood/reconocimiento_ia.webp', '/portfolio-assets/wankafood/receta.webp']
   },
   {
     id: '3',
@@ -62,13 +62,13 @@ export const projects: Project[] = [
     contribution: 'Desarrollo del caso de estudio de ruteo óptimo y simulación de congestión variable.',
     technologies: ['Python', 'Q-Learning', 'Machine Learning', 'Numpy', 'Matplotlib'],
     repoUrl: 'https://github.com/tu-usuario/repo',
-    thumbnail: '/portfolio-assets/q-learning/ruta.png',
+    thumbnail: '/portfolio-assets/q-learning/ruta.webp',
     context: 'Investigación académica sobre la aplicación de Aprendizaje por Refuerzo en problemas logísticos.',
     problem: 'Las rutas tradicionales no se adaptan dinámicamente a niveles de congestión variables en tiempo real.',
     solution: 'Se modeló el entorno como un Proceso de Decisión de Markov y se aplicó el algoritmo Q-Learning para que el agente aprenda la ruta óptima penalizando zonas de alta congestión.',
     architecture: ['Algoritmo: Q-Learning Tabular', 'Entorno: Gridworld personalizado en Python', 'Visualización: Matplotlib'],
     results: ['Convergencia del algoritmo en 500 episodios', 'Reducción del tiempo de ruta simulado en un 25% frente a algoritmos estáticos', 'Paper académico con resultados experimentales'],
-    images: ['/portfolio-assets/q-learning/ruta.png', '/portfolio-assets/q-learning/grafico-recompensa.png']
+    images: ['/portfolio-assets/q-learning/ruta.webp', '/portfolio-assets/q-learning/grafico-recompensa.webp']
   },
   {
     id: '4',
@@ -78,13 +78,13 @@ export const projects: Project[] = [
     type: 'Proyecto Académico/Profesional',
     contribution: 'Desarrollo de módulo de Leads, componentes frontend y sistema de autenticación.',
     technologies: ['Spring Boot', 'Java', 'React', 'Docker', 'PostgreSQL'],
-    thumbnail: '/portfolio-assets/crm/dashboard.png',
+    thumbnail: '/portfolio-assets/crm/modulo_leads.webp',
     context: 'Desarrollo de un CRM para gestionar campañas de marketing y seguimiento de clientes potenciales.',
     problem: 'Sistemas monolíticos difíciles de escalar y mantener a largo plazo.',
     solution: 'Implementación estricta de Arquitectura Hexagonal (Puertos y Adaptadores) separando la lógica de dominio de la infraestructura, encapsulado en contenedores Docker.',
     architecture: ['Backend: Spring Boot con Arquitectura Hexagonal', 'Frontend: React SPA', 'Base de datos: PostgreSQL', 'Despliegue: Docker & Docker Compose'],
     results: ['Código altamente testeable (85% de cobertura)', 'Despliegue automatizado y consistente', 'Interfaz rápida y segura con JWT'],
-    images: ['/portfolio-assets/crm/dashboard.png', '/portfolio-assets/crm/arquitectura.png']
+    images: ['/portfolio-assets/crm/modulo_leads.webp', '/portfolio-assets/crm/importaciones.webp']
   },
   {
     id: '5',
@@ -94,29 +94,13 @@ export const projects: Project[] = [
     type: 'Proyecto Académico',
     contribution: 'Implementación de algoritmos FCFS, SJF, SRTF, RR y generación de Diagramas de Gantt.',
     technologies: ['Java', 'Swing/JavaFX', 'Estructuras de Datos'],
-    thumbnail: '/portfolio-assets/cpu-simulator/gantt.png',
+    thumbnail: '/portfolio-assets/cpu-simulator/cpu.webp',
     context: 'Proyecto para el curso de Sistemas Operativos enfocado en entender cómo el procesador gestiona las tareas.',
     problem: 'La teoría matemática de los algoritmos de planificación es abstracta y difícil de visualizar.',
     solution: 'Un simulador gráfico donde el usuario ingresa procesos, tiempos de llegada y ráfaga, y el sistema calcula los tiempos de espera y retorno, dibujando el Diagrama de Gantt resultante.',
     architecture: ['Lenguaje: Java', 'Paradigma: Programación Orientada a Objetos pura', 'UI: Interfaces nativas de Java'],
     results: ['Implementación exitosa de 4 algoritmos clave', 'Interfaz gráfica interactiva para análisis visual'],
-    images: ['/portfolio-assets/cpu-simulator/gantt.png']
-  },
-  {
-    id: '6',
-    slug: 'automatizacion',
-    title: 'Automatización de Datos',
-    shortDescription: 'Scripts para el procesamiento masivo de registros y automatización de flujos.',
-    type: 'Proyecto Independiente',
-    contribution: 'Desarrollo completo de scripts y despliegue en el entorno de Google.',
-    technologies: ['Google Apps Script', 'JavaScript', 'Google Workspace APIs'],
-    thumbnail: '/portfolio-assets/aura/portada.png', // Placeholder
-    context: 'Optimización de procesos manuales repetitivos en el manejo de hojas de cálculo y correos.',
-    problem: 'Pérdida de horas-hombre en la transcripción de datos y envío de reportes diarios.',
-    solution: 'Scripts automatizados en Google Apps Script que leen registros, los formatean, cruzan información con otras bases y envían reportes por correo de manera desatendida.',
-    architecture: ['Entorno: Google Apps Script', 'Triggers: Ejecuciones programadas por tiempo (CRON)'],
-    results: ['Ahorro de 15 horas de trabajo manual a la semana', 'Eliminación del 100% de errores de transcripción'],
-    images: []
+    images: ['/portfolio-assets/cpu-simulator/cpu.webp']
   }
 ];
 

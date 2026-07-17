@@ -30,12 +30,14 @@ export function ProjectsSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Card className="h-full flex flex-col group hover:border-brand-primary/50 transition-all duration-300">
-                <div className="relative h-48 w-full overflow-hidden border-b border-white/5 bg-brand-bg">
+                <div className="relative h-48 w-full overflow-hidden border-b border-white/5 bg-brand-bg group">
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-card to-transparent z-10 opacity-60"></div>
-                  {/* Utilizaremos un div con color si la imagen no carga, o placeholder */}
-                  <div className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 bg-brand-primary/10 flex items-center justify-center text-brand-text-muted text-xs">
-                    [Imagen: {project.title}]
-                  </div>
+                  <Image 
+                    src={project.thumbnail} 
+                    alt={project.title}
+                    fill
+                    className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
                 
                 <CardContent className="p-6 flex-grow flex flex-col">

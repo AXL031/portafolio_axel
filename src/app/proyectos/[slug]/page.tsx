@@ -1,11 +1,13 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft, ExternalLink, CheckCircle2 } from 'lucide-react'
 import { Github } from '@/components/icons'
 import { projects } from '@/data/portfolio'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Card, CardContent } from '@/components/ui/Card'
+import { ProjectGallery } from '@/components/ui/ProjectGallery'
 
 // Generate metadata for each project page
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
@@ -83,13 +85,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
         {/* Hero Image / Mockup */}
         <div className="w-full h-64 md:h-96 rounded-xl overflow-hidden bg-brand-card border border-white/10 mb-16 flex items-center justify-center relative">
-           {/* In a real scenario, you'd use next/image here */}
-           <div className="absolute inset-0 bg-brand-primary/5 flex flex-col items-center justify-center text-brand-text-muted">
-             <span className="text-sm border border-brand-primary/20 px-4 py-2 rounded bg-brand-bg/50 backdrop-blur-md">
-               {project.thumbnail}
-             </span>
-             <p className="mt-2 text-xs">Imagen principal del proyecto</p>
-           </div>
+           <Image 
+             src={project.thumbnail} 
+             alt={`Imagen principal de ${project.title}`}
+             fill
+             className="object-contain p-4 md:p-8"
+             priority
+           />
         </div>
 
         {/* Project Details */}
@@ -164,19 +166,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           )}
 
           {/* Project Gallery */}
-          {project.images && project.images.length > 1 && (
-            <div>
-              <h2 className="text-3xl font-bold text-white mb-6 border-b border-white/10 pb-4">Galería</h2>
-              <div className="grid sm:grid-cols-2 gap-4">
-                {project.images.map((img, i) => (
-                  <div key={i} className="h-48 rounded-lg overflow-hidden bg-brand-card border border-white/10 relative flex items-center justify-center text-brand-text-muted text-xs group">
-                    <div className="absolute inset-0 bg-brand-primary/5 group-hover:bg-brand-primary/10 transition-colors" />
-                    <span className="relative z-10 px-2 py-1 bg-brand-bg/80 rounded">{img}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          <ProjectGallery images={project.images || []} title={project.title} />
 
         </div>
       </div>
