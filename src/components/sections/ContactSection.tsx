@@ -1,7 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, Send } from 'lucide-react'
+import { Mail, Send, MessageCircle } from 'lucide-react'
+import { Whatsapp } from '@/components/icons'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Button } from '@/components/ui/Button'
 import { Card, CardContent } from '@/components/ui/Card'
@@ -34,16 +35,22 @@ export function ContactSection() {
                   Actualmente estoy abierto a nuevas oportunidades para prácticas profesionales o posiciones Jr. en desarrollo de software.
                 </p>
                 
-                <div className="flex flex-col sm:flex-row justify-center gap-4">
-                  <a href="mailto:tu-email@ejemplo.com">
+                <div className="flex flex-col sm:flex-row justify-center gap-4 flex-wrap">
+                  <a href="mailto:axelcueva2601@gmail.com">
                     <Button size="lg" className="w-full sm:w-auto">
                       <Send size={18} className="mr-2" />
-                      Enviar mensaje
+                      Enviar correo
                     </Button>
                   </a>
-                  <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noreferrer">
+                  <a href="https://www.linkedin.com/in/axelcuevaalcala/" target="_blank" rel="noreferrer">
                     <Button variant="secondary" size="lg" className="w-full sm:w-auto">
-                      Conectar en LinkedIn
+                      LinkedIn
+                    </Button>
+                  </a>
+                  <a href="https://wa.me/51994055173" target="_blank" rel="noreferrer">
+                    <Button variant="outline" size="lg" className="w-full sm:w-auto bg-green-500/10 hover:bg-green-500/20 text-green-400 border-green-500/20">
+                      <Whatsapp size={18} className="mr-2" />
+                      WhatsApp
                     </Button>
                   </a>
                 </div>

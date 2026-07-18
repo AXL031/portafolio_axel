@@ -30,6 +30,7 @@ export function ProjectGallery({ images, title }: ProjectGalleryProps) {
               src={img} 
               alt={`Galería de ${title} - Imagen ${i + 1}`}
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
             />
             {/* Hover overlay for hint */}
@@ -73,6 +74,7 @@ export function ProjectGallery({ images, title }: ProjectGalleryProps) {
                 src={selectedImage}
                 alt={`Imagen ampliada de ${title}`}
                 fill
+                sizes="100vw"
                 className="object-contain"
                 priority
               />
