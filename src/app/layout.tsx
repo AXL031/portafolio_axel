@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
@@ -12,6 +13,6 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" id="top" data-scroll-behavior="smooth"><body><a href="#contenido" className="skip-link">Saltar al contenido</a><Navbar /><main id="contenido">{children}</main><Footer /></body></html>
+    <html lang="es" id="top" data-scroll-behavior="smooth"><body><a href="#contenido" className="skip-link">Saltar al contenido</a><Navbar /><main id="contenido">{children}</main><Footer /><Analytics /></body></html>
   )
 }
