@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#191a19"/><text x="11" y="43" font-family="Georgia,serif" font-size="36" font-style="italic" fill="#c89070">ac</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>A de Axel Cueva</title>
+  <rect width="64" height="64" rx="14" fill="#191a19"/>
+  <path fill="#c89070" fill-rule="evenodd" d="M30 12h5l16 37h3v4H35v-4h5l-3.5-9H23l-3.5 9H25v4H10v-4h5L30 12Zm-.4 11-4.9 12h9.8l-4.9-12Z" clip-rule="evenodd"/>
+</svg>

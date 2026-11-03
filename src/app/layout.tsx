@@ -7,7 +7,6 @@ export const metadata: Metadata = {
   title: { default: 'Axel Cueva — Desarrollo full stack e IA', template: '%s | Axel Cueva' },
   description: 'Soy Axel Cueva, estudiante de Ingeniería de Software en la UNMSM. Desarrollo aplicaciones web y exploro arquitectura de software e inteligencia artificial.',
   keywords: ['Axel Cueva', 'Full Stack Developer', 'UNMSM', 'Next.js', 'React', 'Java', 'Inteligencia Artificial'],
-  icons: { icon: '/icon.svg' },
   openGraph: { title: 'Axel Cueva — Desarrollo full stack e IA', description: 'Interfaces claras. Sistemas bien pensados. Conoce mis proyectos de desarrollo web, arquitectura e inteligencia artificial.', locale: 'es_PE', type: 'website' },
 }
 
