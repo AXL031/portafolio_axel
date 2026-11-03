@@ -1,97 +1,33 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import Link from 'next/link'
 import Image from 'next/image'
-import { ExternalLink, ArrowRight } from 'lucide-react'
-import { Github } from '@/components/icons'
-import { SectionHeading } from '@/components/ui/SectionHeading'
-import { Card, CardContent, CardFooter } from '@/components/ui/Card'
-import { Badge } from '@/components/ui/Badge'
-import { Button } from '@/components/ui/Button'
-import { projects } from '@/data/portfolio'
+import Link from 'next/link'
+import { ArrowUpRight } from 'lucide-react'
+import { projects, projectPresentation } from '@/data/portfolio'
 
 export function ProjectsSection() {
-  return (
-    <section className="py-24 bg-brand-bg relative" id="proyectos">
-      <div className="container mx-auto px-4 md:px-6">
-        <SectionHeading 
-          title="Proyectos Destacados" 
-          subtitle="Una selección de mis mejores trabajos, abarcando desde desarrollo Full Stack hasta investigación en IA."
-        />
+  const featured = projects.slice(0, 2)
+  const otherProjects = projects.slice(2)
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <Card className="h-full flex flex-col group hover:border-brand-primary/50 transition-all duration-300">
-                <div className="relative h-48 w-full overflow-hidden border-b border-white/5 bg-brand-bg group">
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-card to-transparent z-10 opacity-60"></div>
-                  <Image 
-                    src={project.thumbnail} 
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-contain p-4 group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                
-                <CardContent className="p-6 flex-grow flex flex-col">
-                  <div className="flex justify-between items-start mb-4">
-                    <Badge variant="accent" className="mb-2">{project.type}</Badge>
-                    <div className="flex gap-2">
-                      {project.repoUrl && (
-                        <a href={project.repoUrl} target="_blank" rel="noreferrer" className="text-brand-text-muted hover:text-white transition-colors" title="Ver código fuente">
-                          <Github size={18} />
-                        </a>
-                      )}
-                      {project.demoUrl && (
-                        <a href={project.demoUrl} target="_blank" rel="noreferrer" className="text-brand-text-muted hover:text-white transition-colors" title="Visitar demo">
-                          <ExternalLink size={18} />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                  
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-brand-primary transition-colors">
-                    <Link href={`/proyectos/${project.slug}`}>
-                      {project.title}
-                    </Link>
-                  </h3>
-                  
-                  <p className="text-sm text-brand-text-muted mb-4 flex-grow">
-                    {project.shortDescription}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {project.technologies.slice(0, 3).map((tech, i) => (
-                      <span key={i} className="text-xs text-brand-accent font-medium">
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 3 && (
-                      <span className="text-xs text-brand-text-muted">+{project.technologies.length - 3}</span>
-                    )}
-                  </div>
-                </CardContent>
-                
-                <CardFooter className="p-6 pt-0 mt-auto">
-                  <Link href={`/proyectos/${project.slug}`} className="w-full">
-                    <Button variant="secondary" className="w-full group-hover:bg-brand-primary group-hover:text-white transition-all">
-                      Ver Detalles
-                      <ArrowRight size={16} className="ml-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                    </Button>
-                  </Link>
-                </CardFooter>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
+  return (
+    <section className="projects-section page-width section-space" id="proyectos" aria-labelledby="projects-title">
+      <div className="section-heading"><div><p className="eyebrow">01 / Trabajo seleccionado</p><h2 id="projects-title">Ideas que toman forma.</h2></div><p>Desde una presencia digital<br />hasta una integración con IA.</p></div>
+      <div className="featured-projects">
+        {featured.map((project, index) => (
+          <article className="featured-project" key={project.id}>
+            <Link className="project-visual" href={`/proyectos/${project.slug}`} data-project={project.slug} aria-label={`Explorar ${project.title}`}>
+              <div className="project-visual-top"><span>{String(index + 1).padStart(2, '0')} / {projectPresentation[project.slug].category}</span><span className="project-visual-arrow"><ArrowUpRight size={19} aria-hidden="true" /></span></div>
+              <div className="project-screenshot"><Image src={project.thumbnail} alt={`Vista de ${project.title}`} fill sizes="(max-width: 700px) 90vw, (max-width: 1200px) 50vw, 600px" className="project-image" /></div>
+              <div className="project-visual-bottom"><span>{projectPresentation[project.slug].caption}</span><span aria-hidden="true">↗</span></div>
+            </Link>
+            <div className="project-description"><p className="project-category">{project.type}</p><h3><Link href={`/proyectos/${project.slug}`}>{project.title}</Link></h3><p className="project-summary">{project.shortDescription}</p><p className="project-contribution"><span>Mi aporte</span>{project.contribution}</p><div className="project-meta"><p>{project.technologies.slice(0, 3).join(' / ')}</p><Link className="text-link" href={`/proyectos/${project.slug}`}>Explorar el caso<ArrowUpRight size={16} aria-hidden="true" /></Link></div></div>
+          </article>
+        ))}
+      </div>
+      <div className="other-projects"><div className="other-projects-heading"><h3>También he construido</h3><span className="eyebrow">Arquitectura / Investigación / Sistemas</span></div>
+        {otherProjects.map((project, index) => (
+          <Link className="project-row" href={`/proyectos/${project.slug}`} key={project.id}>
+            <span className="project-number">0{index + 3}</span><div className="project-row-title"><h4>{project.title}</h4><p>{project.shortDescription}</p></div><span className="project-row-category">{projectPresentation[project.slug].category}</span><ArrowUpRight className="project-row-arrow" size={23} aria-hidden="true" />
+          </Link>
+        ))}
       </div>
     </section>
   )

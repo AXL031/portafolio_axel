@@ -1,31 +1,18 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
-
-const inter = Inter({ subsets: ["latin"] });
+import type { Metadata } from 'next'
+import './globals.css'
+import { Navbar } from '@/components/layout/Navbar'
+import { Footer } from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
-  title: "Axel | Software Engineer Portfolio",
-  description: "Portafolio profesional de Axel, estudiante de Ingeniería de Software enfocado en desarrollo web, arquitectura de software e inteligencia artificial.",
-  keywords: ["Software Engineer", "Full Stack Developer", "Next.js", "React", "Inteligencia Artificial", "Portfolio"],
-};
+  title: { default: 'Axel Cueva — Desarrollo full stack e IA', template: '%s | Axel Cueva' },
+  description: 'Soy Axel Cueva, estudiante de Ingeniería de Software en la UNMSM. Desarrollo aplicaciones web y exploro arquitectura de software e inteligencia artificial.',
+  keywords: ['Axel Cueva', 'Full Stack Developer', 'UNMSM', 'Next.js', 'React', 'Java', 'Inteligencia Artificial'],
+  icons: { icon: '/icon.svg' },
+  openGraph: { title: 'Axel Cueva — Desarrollo full stack e IA', description: 'Interfaces claras. Sistemas bien pensados. Conoce mis proyectos de desarrollo web, arquitectura e inteligencia artificial.', locale: 'es_PE', type: 'website' },
+}
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className="scroll-smooth">
-      <body className={`${inter.className} bg-brand-bg text-brand-text antialiased min-h-screen flex flex-col`}>
-        <Navbar />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
-      </body>
-    </html>
-  );
+    <html lang="es" id="top" data-scroll-behavior="smooth"><body><a href="#contenido" className="skip-link">Saltar al contenido</a><Navbar /><main id="contenido">{children}</main><Footer /></body></html>
+  )
 }

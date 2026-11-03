@@ -1,87 +1,36 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Menu, X } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { ArrowUpRight, Menu, X } from 'lucide-react'
 
-const navLinks = [
-  { name: 'Inicio', href: '/' },
-  { name: 'Sobre mí', href: '/#sobre-mi' },
-  { name: 'Tecnologías', href: '/#tecnologias' },
-  { name: 'Proyectos', href: '/#proyectos' },
-  { name: 'Contacto', href: '/#contacto' },
+const links = [
+  { label: 'Trabajo', href: '/#proyectos' },
+  { label: 'Sobre mí', href: '/#sobre-mi' },
+  { label: 'Herramientas', href: '/#tecnologias' },
 ]
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
+    if (!menuOpen) return
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false)
+        document.getElementById('menu-toggle')?.focus()
+      }
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    document.addEventListener('keydown', closeOnEscape)
+    return () => document.removeEventListener('keydown', closeOnEscape)
+  }, [menuOpen])
 
   return (
-    <header
-      className={cn(
-        'fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent',
-        {
-          'bg-brand-bg/80 backdrop-blur-md border-white/10 shadow-lg': isScrolled,
-          'bg-transparent py-4': !isScrolled,
-        }
-      )}
-    >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="text-xl font-bold tracking-tighter text-white">
-            Axel<span className="text-brand-primary">.dev</span>
-          </Link>
-
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm font-medium text-brand-text-muted transition-colors hover:text-brand-accent"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Mobile Menu Toggle */}
-          <button
-            className="md:hidden text-brand-text"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Nav */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-brand-card border-b border-white/10 absolute top-full left-0 w-full">
-          <nav className="flex flex-col container mx-auto px-4 py-4 space-y-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-base font-medium text-brand-text hover:text-brand-primary"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      )}
-    </header>
+    <header className="site-header"><div className="header-inner page-width">
+      <Link href="/" className="wordmark" aria-label="Axel Cueva, inicio" onClick={() => setMenuOpen(false)}>axel <span>/</span> cueva<span className="wordmark-dot">.</span></Link>
+      <nav className="desktop-navigation" aria-label="Navegación principal">{links.map(link => <Link href={link.href} key={link.href}>{link.label}</Link>)}</nav>
+      <Link className="header-contact" href="/#contacto">Hablemos<ArrowUpRight size={15} aria-hidden="true" /></Link>
+      <button id="menu-toggle" className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="mobile-navigation" aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X size={23} aria-hidden="true" /> : <Menu size={23} aria-hidden="true" />}</button>
+    </div><nav id="mobile-navigation" className="mobile-navigation page-width" aria-label="Navegación móvil" hidden={!menuOpen}>{[...links, { label: 'Hablemos', href: '/#contacto' }].map(link => <Link href={link.href} key={link.href} onClick={() => setMenuOpen(false)}>{link.label}<ArrowUpRight size={16} aria-hidden="true" /></Link>)}</nav></header>
   )
 }

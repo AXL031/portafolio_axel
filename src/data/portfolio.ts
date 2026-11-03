@@ -1,3 +1,18 @@
+export const profile = {
+  email: 'axelcueva2601@gmail.com',
+  github: 'https://github.com/AXL031',
+  linkedin: 'https://www.linkedin.com/in/axelcuevaalcala/',
+  whatsapp: 'https://wa.me/51994055173',
+}
+
+export const projectPresentation: Record<string, { category: string; caption: string }> = {
+  aura: { category: 'Desarrollo web', caption: 'Una presencia digital para conectar.' },
+  wankafood: { category: 'Producto + IA', caption: 'De ingredientes a nuevas ideas.' },
+  'q-learning': { category: 'Investigación IA', caption: 'Aprender a encontrar el camino.' },
+  crm: { category: 'Arquitectura', caption: 'Sistemas pensados para evolucionar.' },
+  'cpu-simulator': { category: 'Sistemas', caption: 'La teoría, puesta en movimiento.' },
+}
+
 export interface Project {
   id: string;
   slug: string;
