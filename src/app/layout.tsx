@@ -5,11 +5,19 @@ import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { themeInitScript } from '@/lib/theme'
 
+const siteTitle = 'Axel Cueva — Desarrollo full stack e IA'
+const siteDescription = 'Axel Cueva, estudiante de Ingeniería de Software en la UNMSM, desarrollador full stack y Practicante de Integraciones TI en Alignet.'
+
 export const metadata: Metadata = {
-  title: { default: 'Axel Cueva — Desarrollo full stack e IA', template: '%s | Axel Cueva' },
-  description: 'Soy Axel Cueva, estudiante de Ingeniería de Software en la UNMSM. Desarrollo aplicaciones web y exploro arquitectura de software e inteligencia artificial.',
-  keywords: ['Axel Cueva', 'Full Stack Developer', 'UNMSM', 'Next.js', 'React', 'Java', 'Inteligencia Artificial'],
-  openGraph: { title: 'Axel Cueva — Desarrollo full stack e IA', description: 'Interfaces claras. Sistemas bien pensados. Conoce mis proyectos de desarrollo web, arquitectura e inteligencia artificial.', locale: 'es_PE', type: 'website' },
+  title: { default: siteTitle, template: '%s | Axel Cueva' },
+  description: siteDescription,
+  keywords: ['Axel Cueva', 'Desarrollo full stack', 'Integraciones TI', 'UNMSM', 'Backend', 'Next.js', 'React', 'Java', 'Inteligencia Artificial'],
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    locale: 'es_PE',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

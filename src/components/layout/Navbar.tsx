@@ -7,6 +7,7 @@ import { ThemeSwitcher } from './ThemeSwitcher'
 
 const links = [
   { label: 'Trabajo', href: '/#proyectos' },
+  { label: 'Experiencia', href: '/#experiencia' },
   { label: 'Sobre mí', href: '/#sobre-mi' },
   { label: 'Herramientas', href: '/#tecnologias' },
 ]

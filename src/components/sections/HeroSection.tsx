@@ -11,7 +11,7 @@ export function HeroSection() {
       </div>
       <div className="hero-story">
         <p className="hero-introduction">Conecto interfaces claras<br className="desktop-break" /> con sistemas bien pensados.</p>
-        <p className="hero-description">Soy estudiante de Ingeniería de Software en la UNMSM. Construyo aplicaciones web y exploro cómo la inteligencia artificial puede hacerlas más útiles.</p>
+        <p className="hero-description">Estudio Ingeniería de Software en la UNMSM y soy Practicante de Integraciones TI en Alignet. Desarrollo aplicaciones web, integro sistemas y exploro cómo aplicar la inteligencia artificial.</p>
         <dl className="hero-facts">
           <div><dt>Formación</dt><dd>Ingeniería de Software · UNMSM</dd></div>
           <div><dt>Enfoque</dt><dd>Desarrollo full stack + IA</dd></div>

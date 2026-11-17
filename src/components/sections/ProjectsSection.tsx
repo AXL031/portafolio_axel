@@ -24,8 +24,8 @@ function ProjectCard({ project, number, sizes }: { project: Project; number: num
         <h3><Link href={href}>{project.title}</Link></h3>
         <p className="project-summary">{project.shortDescription}</p>
         <p className="project-contribution">
-          <span>{project.role ? 'Mi rol' : 'Mi aporte'}</span>
-          {project.role ?? project.contribution}
+          <span>Mi aporte</span>
+          {project.contribution}
         </p>
         <div className="project-meta">
           <p>{project.technologies.slice(0, 3).join(' / ')}</p>
