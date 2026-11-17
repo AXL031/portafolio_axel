@@ -39,7 +39,7 @@ export default async function ProjectPage({ params }: Props) {
           <span className="eyebrow">Tecnologías</span>
           <p>{project.technologies.join(' / ')}</p>
           <div className="case-actions">
-            {project.demoUrl && <a className="button-link" href={project.demoUrl} target="_blank" rel="noopener noreferrer">Visitar sitio<ArrowUpRight size={16} aria-hidden="true" /></a>}
+            {project.demoUrl && <a className="button-link" href={project.demoUrl} target="_blank" rel="noopener noreferrer">{project.demoLabel ?? 'Ver demo'}<ArrowUpRight size={16} aria-hidden="true" /></a>}
             {project.repoUrl && <a className="button-link secondary" href={project.repoUrl} target="_blank" rel="noopener noreferrer">Ver en GitHub<ArrowUpRight size={16} aria-hidden="true" /></a>}
           </div>
         </div>

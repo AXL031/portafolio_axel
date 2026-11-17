@@ -26,6 +26,7 @@ export interface Project {
   role?: string;
   technologies: string[];
   demoUrl?: string;
+  demoLabel?: string;
   repoUrl?: string;
   thumbnail: string;
   
@@ -48,6 +49,7 @@ export const projects: Project[] = [
     role: 'Lideré el equipo, repartí los módulos entre sus integrantes y definí la arquitectura que conecta el pronóstico, la planificación, el inventario y la tienda.',
     contribution: 'Desarrollé el motor que programa y recupera tareas, registra los intentos de ejecución y conecta los módulos del flujo. También coordiné el acceso, la configuración y la infraestructura común.',
     technologies: ['Next.js', 'FastAPI', 'Celery', 'Redis', 'PostgreSQL', 'CatBoost', 'Docker Compose'],
+    demoUrl: 'https://demo-foodsave.vercel.app/iniciar-sesion',
     repoUrl: 'https://github.com/AXL031/savefood_automatizacion',
     thumbnail: '/portfolio-assets/foodsave/automatizacion.webp',
     context: 'Prototipo para un comercio y una sucursal. El equipo abordó el desperdicio de alimentos perecibles desde la planificación diaria de una panadería.',
@@ -98,6 +100,7 @@ export const projects: Project[] = [
     role: 'Lideré el equipo, distribuí los módulos de análisis y definí la arquitectura común de datos, modelos, API y panel.',
     contribution: 'Desarrollé el módulo de fraude, entrené y evalué el clasificador con una partición temporal y presenté los resultados mediante FastAPI y Streamlit.',
     technologies: ['Python', 'scikit-learn', 'FastAPI', 'Streamlit', 'pandas', 'Parquet'],
+    demoUrl: 'https://demo-bankshield.vercel.app/',
     repoUrl: 'https://github.com/AXL031/mineria_proyecto_G6',
     thumbnail: '/portfolio-assets/bankshield/portada.webp',
     context: 'Proyecto del Grupo 6 que estudia transacciones PaySim, crédito y reclamos como tres fuentes independientes.',
@@ -123,6 +126,7 @@ export const projects: Project[] = [
     contribution: 'Desarrollo Full Stack, despliegue y configuración de analíticas.',
     technologies: ['Next.js', 'React', 'Tailwind CSS', 'Firebase Hosting', 'Google Analytics', 'Apps Script'],
     demoUrl: 'https://auracentropsicologico.com/inicio',
+    demoLabel: 'Visitar sitio',
     thumbnail: '/portfolio-assets/aura/portada.webp',
     context: 'Aura Centro Psicológico necesitaba una presencia digital profesional para atraer pacientes y gestionar citas.',
     problem: 'Falta de visibilidad online y proceso manual de registro de interesados.',
