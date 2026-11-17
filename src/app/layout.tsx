@@ -3,6 +3,7 @@ import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
+import { themeInitScript } from '@/lib/theme'
 
 export const metadata: Metadata = {
   title: { default: 'Axel Cueva — Desarrollo full stack e IA', template: '%s | Axel Cueva' },
@@ -13,6 +14,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" id="top" data-scroll-behavior="smooth"><body><a href="#contenido" className="skip-link">Saltar al contenido</a><Navbar /><main id="contenido">{children}</main><Footer /><Analytics /></body></html>
+    <html lang="es" id="top" data-scroll-behavior="smooth" suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: themeInitScript }} /></head>
+      <body><a href="#contenido" className="skip-link">Saltar al contenido</a><Navbar /><main id="contenido">{children}</main><Footer /><Analytics /></body>
+    </html>
   )
 }
