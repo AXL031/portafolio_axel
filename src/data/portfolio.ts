@@ -6,6 +6,9 @@ export const profile = {
 }
 
 export const projectPresentation: Record<string, { category: string; caption: string }> = {
+  foodsave: { category: 'Automatización', caption: 'Configuración de una jornada de prueba.' },
+  'procesamiento-paralelo-g7': { category: 'Sistemas distribuidos', caption: 'Telemetría del clúster durante el entrenamiento.' },
+  bankshield: { category: 'Ciencia de datos', caption: 'Panel de analítica financiera de BankShield.' },
   aura: { category: 'Desarrollo web', caption: 'Una presencia digital para conectar.' },
   wankafood: { category: 'Producto + IA', caption: 'De ingredientes a nuevas ideas.' },
   'q-learning': { category: 'Investigación IA', caption: 'Aprender a encontrar el camino.' },
@@ -20,6 +23,7 @@ export interface Project {
   shortDescription: string;
   type: string;
   contribution: string;
+  role?: string;
   technologies: string[];
   demoUrl?: string;
   repoUrl?: string;
@@ -35,6 +39,81 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: '6',
+    slug: 'foodsave',
+    title: 'FoodSave',
+    shortDescription: 'Automatiza los pronósticos de demanda, la planificación de producción y las propuestas de compra de una panadería.',
+    type: 'Proyecto académico grupal',
+    role: 'Lideré el equipo, repartí los módulos entre sus integrantes y definí la arquitectura que conecta el pronóstico, la planificación, el inventario y la tienda.',
+    contribution: 'Me encargué del motor de automatización: programación de tareas, recuperación de ejecuciones y trazabilidad de intentos. También coordiné el acceso, la configuración y la infraestructura común.',
+    technologies: ['Next.js', 'FastAPI', 'Celery', 'Redis', 'PostgreSQL', 'CatBoost', 'Docker Compose'],
+    repoUrl: 'https://github.com/AXL031/savefood_automatizacion',
+    thumbnail: '/portfolio-assets/foodsave/automatizacion.webp',
+    context: 'Prototipo para un comercio y una sucursal. El equipo abordó el desperdicio de alimentos perecibles desde la planificación diaria de una panadería.',
+    problem: 'Para decidir cuánto producir y cuánto comprar, hay que combinar ventas históricas, recetas y lotes disponibles. Si una tarea se interrumpe, el equipo necesita saber qué quedó pendiente antes de volver a ejecutarla.',
+    solution: 'Una programación dispara el pronóstico y lo convierte en un plan de producción. El sistema cruza el plan con recetas e inventario para calcular faltantes y preparar propuestas de compra para revisión.',
+    architecture: [
+      'Next.js sirve el panel administrativo. FastAPI expone los módulos de negocio y PostgreSQL conserva programaciones, estados e inventario por lotes.',
+      'Celery Beat detecta tareas vencidas y Redis actúa como cola. Los workers registran intentos y recuperan ejecuciones pendientes con controles para evitar efectos duplicados.',
+      'CatBoost estima la demanda. La tienda independiente consulta el catálogo y las promociones por HTTP.',
+    ],
+    results: [
+      'En una jornada con datos de prueba, la automatización generó pronósticos para 12 productos y preparó dos pedidos de prueba.',
+      'La tienda recibió un catálogo de 139 productos mediante la integración HTTP en la demostración.',
+    ],
+    images: ['/portfolio-assets/foodsave/automatizacion.webp', '/portfolio-assets/foodsave/planificacion.webp'],
+  },
+  {
+    id: '7',
+    slug: 'procesamiento-paralelo-g7',
+    title: 'Procesamiento paralelo en Go',
+    shortDescription: 'Procesamiento de viajes de taxi de Nueva York y comparación de entrenamiento secuencial y distribuido.',
+    type: 'Proyecto académico grupal',
+    role: 'Lideré el equipo, repartí el trabajo de carga, entrenamiento, API y validación, y definí la arquitectura para comparar ambos modos de ejecución.',
+    contribution: 'Preparé el entorno aislado de benchmarks, integré las mediciones de los distintos módulos y conservé los resultados y sus huellas para que el equipo pudiera verificarlos.',
+    technologies: ['Go', 'Docker Compose', 'MongoDB', 'Redis', 'React', 'TCP', 'WebSocket'],
+    repoUrl: 'https://github.com/AXL031/programacion_paralela_proyecto_G7',
+    thumbnail: '/portfolio-assets/procesamiento-paralelo-g7/telemetria.webp',
+    context: 'Proyecto del Grupo 7 con registros públicos de viajes de taxi de Nueva York de la primera quincena de enero de 2024.',
+    problem: 'Medir si repartir el entrenamiento entre varios procesos compensa el coste de sincronización y estimar la latencia de la API bajo distintas condiciones de caché.',
+    solution: 'El equipo construyó un cargador concurrente y dos modos de entrenamiento con datos y configuración equivalentes. El banco de pruebas separó las campañas de carga, entrenamiento y API.',
+    architecture: [
+      'Un cargador en Go valida registros con goroutines y escribe por lotes en MongoDB.',
+      'Para el entrenamiento distribuido, un coordinador TCP reparte el cálculo entre workers y agrega sus gradientes. El entrenamiento secuencial usa el mismo conjunto de datos como referencia.',
+      'La API REST sirve predicciones con caché Redis. El panel en React recibe telemetría de los procesos mediante WebSocket.',
+    ],
+    results: [
+      '1.348.665 viajes válidos guardados en MongoDB y 63 muestras de benchmark conservadas para revisión.',
+      'En un solo equipo con contenedores, el entrenamiento secuencial tardó 32,45 s y el distribuido con cuatro workers 36,79 s de mediana.',
+    ],
+    images: ['/portfolio-assets/procesamiento-paralelo-g7/telemetria.webp', '/portfolio-assets/procesamiento-paralelo-g7/entrenamiento.webp'],
+  },
+  {
+    id: '8',
+    slug: 'bankshield',
+    title: 'BankShield Analytics',
+    shortDescription: 'Plataforma de analítica financiera con clasificación de fraude y exploración de redes en transacciones simuladas.',
+    type: 'Proyecto académico grupal',
+    role: 'Lideré el equipo, distribuí los módulos de análisis y definí la arquitectura común de datos, modelos, API y panel.',
+    contribution: 'Me encargué del módulo de fraude: entrené el clasificador, analicé sus errores y expuse la evaluación mediante FastAPI y una pantalla en Streamlit.',
+    technologies: ['Python', 'scikit-learn', 'FastAPI', 'Streamlit', 'pandas', 'Parquet'],
+    repoUrl: 'https://github.com/AXL031/mineria_proyecto_G6',
+    thumbnail: '/portfolio-assets/bankshield/portada.webp',
+    context: 'Proyecto del Grupo 6 que estudia transacciones PaySim, crédito y reclamos como tres fuentes independientes.',
+    problem: 'El fraude es poco frecuente en la simulación. Hay que evaluar cuántos casos detecta el modelo y cuántas alertas incorrectas genera, manteniendo el orden temporal de las operaciones.',
+    solution: 'El módulo entrena un clasificador de gradient boosting con una partición temporal. El umbral se elige en validación y el conjunto de prueba se reserva para medir sus efectos.',
+    architecture: [
+      'Los scripts en Python preparan datos, entrenan modelos fuera de la aplicación y guardan artefactos y reportes reproducibles.',
+      'FastAPI carga los artefactos preparados y sirve predicciones y métricas. Streamlit los presenta en un panel con módulos de análisis.',
+      'La canalización conserva fuentes y particiones por separado para evitar mezclar conjuntos sin una llave común.',
+    ],
+    results: [
+      'La evaluación temporal detectó 3.976 de 4.006 fraudes simulados y generó 1.015 falsos positivos con el umbral elegido en validación.',
+      'El perfil de transacciones PaySim procesó 6.362.620 registros simulados.',
+    ],
+    images: ['/portfolio-assets/bankshield/evaluacion-fraude.webp', '/portfolio-assets/bankshield/red-transacciones.webp'],
+  },
   {
     id: '1',
     slug: 'aura',
