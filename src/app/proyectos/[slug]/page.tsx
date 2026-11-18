@@ -39,9 +39,11 @@ export default async function ProjectPage({ params }: Props) {
           <span className="eyebrow">Tecnologías</span>
           <p>{project.technologies.join(' / ')}</p>
           <div className="case-actions">
+            {project.platformUrl && <a className="button-link" href={project.platformUrl} target="_blank" rel="noopener noreferrer">Abrir plataforma<ArrowUpRight size={16} aria-hidden="true" /></a>}
             {project.demoUrl && <a className="button-link" href={project.demoUrl} target="_blank" rel="noopener noreferrer">{project.demoLabel ?? 'Ver demo'}<ArrowUpRight size={16} aria-hidden="true" /></a>}
             {project.repoUrl && <a className="button-link secondary" href={project.repoUrl} target="_blank" rel="noopener noreferrer">Ver en GitHub<ArrowUpRight size={16} aria-hidden="true" /></a>}
           </div>
+          {project.accessNote && <p className="project-access">{project.accessNote}</p>}
         </div>
       </header>
       <div className="case-cover" data-project={project.slug}><Image src={project.thumbnail} alt={`Vista principal de ${project.title}`} fill sizes="(max-width: 700px) 95vw, (max-width: 1200px) 90vw, 1120px" preload /></div>

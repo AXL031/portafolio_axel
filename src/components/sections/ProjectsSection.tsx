@@ -23,6 +23,7 @@ function ProjectCard({ project, number, sizes }: { project: Project; number: num
         <p className="project-category">{project.type}</p>
         <h3><Link href={href}>{project.title}</Link></h3>
         <p className="project-summary">{project.shortDescription}</p>
+        {project.accessNote && <p className="project-access">{project.accessNote}</p>}
         <p className="project-contribution">
           <span>Mi aporte</span>
           {project.contribution}
@@ -40,23 +41,28 @@ function ProjectCard({ project, number, sizes }: { project: Project; number: num
 }
 
 export function ProjectsSection() {
-  const featured = projects.slice(0, 3)
-  const additionalCases = projects.slice(3, 5)
-  const otherProjects = projects.slice(5)
+  const leadProject = projects[0]
+  const featured = projects.slice(1, 4)
+  const additionalCases = projects.slice(4, 6)
+  const otherProjects = projects.slice(6)
 
   return (
     <section className="projects-section page-width section-space" id="proyectos" aria-labelledby="projects-title">
-      <div className="section-heading"><div><p className="eyebrow">01 / Trabajo seleccionado</p><h2 id="projects-title">Ideas que toman forma.</h2></div><p>Automatización, sistemas distribuidos<br /> y ciencia de datos.</p></div>
+      <div className="section-heading"><div><p className="eyebrow">01 / Trabajo seleccionado</p><h2 id="projects-title">Ideas que toman forma.</h2></div><p>Desarrollo full stack, cloud,<br /> automatización y ciencia de datos.</p></div>
+      <div className="lead-project">
+        <p className="eyebrow lead-project-label">Proyecto destacado</p>
+        <ProjectCard project={leadProject} number={1} sizes="(max-width: 700px) 90vw, (max-width: 1200px) 55vw, 700px" />
+      </div>
       <div className="featured-projects featured-projects-primary">
-        {featured.map((project, index) => <ProjectCard key={project.id} project={project} number={index + 1} sizes="(max-width: 700px) 90vw, 33vw" />)}
+        {featured.map((project, index) => <ProjectCard key={project.id} project={project} number={index + 2} sizes="(max-width: 700px) 90vw, 33vw" />)}
       </div>
       <div className="featured-projects additional-cases">
-        {additionalCases.map((project, index) => <ProjectCard key={project.id} project={project} number={featured.length + index + 1} sizes="(max-width: 700px) 90vw, (max-width: 1200px) 50vw, 600px" />)}
+        {additionalCases.map((project, index) => <ProjectCard key={project.id} project={project} number={featured.length + index + 2} sizes="(max-width: 700px) 90vw, (max-width: 1200px) 50vw, 600px" />)}
       </div>
       <div className="other-projects"><div className="other-projects-heading"><h3>También he construido</h3><span className="eyebrow">Arquitectura / Investigación / Sistemas</span></div>
         {otherProjects.map((project, index) => (
           <Link className="project-row" href={`/proyectos/${project.slug}`} key={project.id}>
-            <span className="project-number">{String(featured.length + additionalCases.length + index + 1).padStart(2, '0')}</span><div className="project-row-title"><h4>{project.title}</h4><p>{project.shortDescription}</p></div><span className="project-row-category">{projectPresentation[project.slug].category}</span><ArrowUpRight className="project-row-arrow" size={23} aria-hidden="true" />
+            <span className="project-number">{String(featured.length + additionalCases.length + index + 2).padStart(2, '0')}</span><div className="project-row-title"><h4>{project.title}</h4><p>{project.shortDescription}</p></div><span className="project-row-category">{projectPresentation[project.slug].category}</span><ArrowUpRight className="project-row-arrow" size={23} aria-hidden="true" />
           </Link>
         ))}
       </div>

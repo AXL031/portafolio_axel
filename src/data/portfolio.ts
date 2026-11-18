@@ -6,6 +6,7 @@ export const profile = {
 }
 
 export const projectPresentation: Record<string, { category: string; caption: string }> = {
+  'productos-y-ofertas': { category: 'Full stack + Cloud', caption: 'Gestión de promociones para Inka Athletics.' },
   foodsave: { category: 'Automatización', caption: 'Configuración de una jornada de prueba.' },
   'procesamiento-paralelo-g7': { category: 'Sistemas distribuidos', caption: 'Telemetría del clúster durante el entrenamiento.' },
   bankshield: { category: 'Ciencia de datos', caption: 'Panel de analítica financiera de BankShield.' },
@@ -27,6 +28,8 @@ export interface Project {
   technologies: string[];
   demoUrl?: string;
   demoLabel?: string;
+  platformUrl?: string;
+  accessNote?: string;
   repoUrl?: string;
   thumbnail: string;
   
@@ -40,6 +43,41 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: '9',
+    slug: 'productos-y-ofertas',
+    title: 'Productos y Ofertas',
+    shortDescription: 'Plataforma de gestión comercial con microservicios para centralizar catálogo, precios, promociones e inventario de Inka Athletics.',
+    type: 'Proyecto académico grupal',
+    role: 'Desarrollador Full Stack — Promociones e Integración Cloud. Responsable de cupones, ofertas y reglas de venta cruzada y upselling, desde la definición funcional hasta la interfaz, el backend y las pruebas.',
+    contribution: 'Implementé 19 vistas administrativas y el servicio de promociones, con descuentos combinables y cupones transaccionales. También integré la autenticación y desplegué los nueve componentes backend en Azure Container Apps.',
+    technologies: ['React', 'NestJS', 'TypeScript', 'PostgreSQL', 'Drizzle ORM', 'Azure Container Apps', 'Docker', 'RabbitMQ', 'Azure Service Bus', 'GitHub Actions'],
+    platformUrl: 'https://g6-productos-ofertas.vercel.app/login',
+    accessNote: 'Requiere una cuenta autorizada. Sin demo pública · Código privado.',
+    thumbnail: '/portfolio-assets/productos-y-ofertas/promociones.webp',
+    context: 'Módulo de una plataforma académica colaborativa de comercio para Inka Athletics. El equipo desarrolló la gestión de productos y variantes, precios, promociones, cupones, recomendaciones, combos e inventario, con servicios para distintos canales comerciales.',
+    problem: 'Los canales de venta necesitan compartir reglas coherentes de disponibilidad, precios y descuentos. El consumo de cupones debe respetar sus límites incluso con solicitudes simultáneas o reintentos, y cada operación debe poder rastrearse entre servicios.',
+    solution: 'Construimos un panel administrativo conectado a servicios de dominio mediante un API Gateway. Mi trabajo se centró en promociones, cupones y recomendaciones basadas en reglas: elegibilidad, vigencias, prioridades, combinación de descuentos y cálculos monetarios exactos. Implementé el consumo y la restitución de cupones con transacciones, control de concurrencia e idempotencia para evitar consumos duplicados.',
+    architecture: [
+      'React, TypeScript, Vite y Mantine para el panel administrativo. NestJS organiza el backend en ocho servicios de dominio y un API Gateway, con contratos OpenAPI y AsyncAPI.',
+      'PostgreSQL mantiene los datos separados por servicio. El dominio de promociones utiliza Drizzle ORM, transacciones y patrones Inbox/Outbox para coordinar persistencia y mensajería con RabbitMQ.',
+      'Integración con Catálogo, Pricing e Inventario y con el módulo de Seguridad G7: JWT/JWKS, MFA y autorización entre servicios. Los tokens de la sesión del frontend se mantienen en memoria.',
+      'Frontend en Vercel y backend en Azure Container Apps: Gateway externo, ocho servicios internos con HTTPS, imágenes Docker de GHCR fijadas por digest y conexiones PostgreSQL con TLS.',
+      'Piloto aislado de Pricing → Azure Service Bus → auditoría de precios, con identidades administradas, detección de duplicados y recuperación de mensajes pendientes. La migración general de RabbitMQ queda fuera del alcance del piloto.',
+    ],
+    results: [
+      '19 vistas administrativas para cupones, promociones y recomendaciones, con filtros, paginación, formularios, validaciones y conservación de borradores.',
+      'Nueve componentes backend desplegados en Azure Container Apps. Cinco consultas conservaron respuestas equivalentes tras migrar desde la VM, también con la VM desasignada.',
+      'Pruebas reales con G7 y Azure para crear, editar y consultar una promoción y un cupón de prueba inactivos, además de comprobar rechazos de autorización.',
+      'Piloto de Azure Service Bus validado en Azure: una reentrega produce un solo efecto y el procesamiento recupera pendientes después de reiniciar.',
+    ],
+    images: [
+      '/portfolio-assets/productos-y-ofertas/promociones.webp',
+      '/portfolio-assets/productos-y-ofertas/cupones.webp',
+      '/portfolio-assets/productos-y-ofertas/recomendaciones.webp',
+      '/portfolio-assets/productos-y-ofertas/login.webp',
+    ],
+  },
   {
     id: '6',
     slug: 'foodsave',
